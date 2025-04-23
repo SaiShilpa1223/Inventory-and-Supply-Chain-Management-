@@ -1,0 +1,104 @@
+
+GET http://localhost:5146/api/products
+Accept: application/json
+###
+
+### Get Product by ID
+GET http://localhost:5146/api/products/3
+Accept: application/json
+###
+
+### Add New Product
+POST http://localhost:5146/api/products
+Content-Type: application/json
+
+{
+  "name": "Testeding",
+  "description": "description for test",
+  "price": 75.86,
+  "supplierId": 1
+}
+
+### Update Product
+PUT http://localhost:5146/api/products/7
+Content-Type: application/json
+
+{
+  "productId": 7,
+  "name": "hkwedhwqefhkewkfewhfwef",
+  "description": "UPDATE PRODUCT",
+  "price": 40.99,
+  "supplierId": 1
+}
+
+### Delete Product
+DELETE http://localhost:5146/api/products/1
+
+### SUPPLIER API
+
+GET http://localhost:5146/api/suppliers
+Accept: application/json
+###
+
+### Get Supplier by ID
+GET http://localhost:5146/api/suppliers/1
+Accept: application/json
+
+### Add New Supplier
+POST http://localhost:5146/api/suppliers
+Content-Type: application/json
+
+{
+  "name": "Supplier Zeta",
+  "Contact": "12877823784",
+  "Address": "gwjashdkajhdkas",
+  "supplierId" : 4
+}
+
+### Update Supplier
+PUT http://localhost:5146/api/suppliers/4
+Content-Type: application/json
+
+{
+  "name": "Supplier Zeta",
+  "Contact": "12877823784",
+  "Address": "Delhi, India",
+  "supplierId" : 4
+}
+
+### Delete Product
+DELETE http://localhost:5146/api/suppliers/5
+
+### INVENTORY API
+
+GET http://localhost:5146/api/inventory
+Accept: application/json
+###
+
+GET http://localhost:5146/api/inventory/2
+Accept: application/json
+###
+
+### Add New Inventory
+POST http://localhost:5146/api/inventory
+Content-Type: application/json
+
+{
+  "productId": 3,
+  "quantityInStock": 67,
+  "reorderLevel": 5
+}
+
+### Update Inventory
+PUT http://localhost:5146/api/inventory/2
+Content-Type: application/json
+
+{
+  "inventoryItemId": 2,
+  "productId": 5,
+  "quantityInStock": 890,
+  "reorderLevel": 400
+}
+
+### Delete Inventory
+DELETE http://localhost:5146/api/inventory/7

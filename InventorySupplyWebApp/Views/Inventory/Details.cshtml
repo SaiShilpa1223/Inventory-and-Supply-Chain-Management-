@@ -1,0 +1,21 @@
+﻿@model InventorySupply.DAL.Models.InventoryItem
+
+<h2>Inventory Details</h2>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Product</dt>
+        <dd class="col-sm-10">@Model.Product.Name</dd>
+
+        <dt class="col-sm-2">Product</dt>
+        <dd class="col-sm-10">@Model.Product.Price</dd>
+        
+        <dt class="col-sm-2">QuantityInStock</dt>
+        <dd class="col-sm-10">@Model.QuantityInStock</dd>
+
+        <dt class="col-sm-2">ReorderLevel</dt>
+        <dd class="col-sm-10">@Model.ReorderLevel</dd>
+    </dl>
+</div>
+
+<a href="@Url.Action("Index", "Inventory")" class="btn btn-secondary">Back to List</a>

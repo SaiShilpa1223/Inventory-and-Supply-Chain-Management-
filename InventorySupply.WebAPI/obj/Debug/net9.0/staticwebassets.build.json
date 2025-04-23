@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "NWe1HiECEbbEdT4yCmnsCAImm1lcBu2e5Qb7yMtdD+0=",
+  "Source": "InventorySupply.WebAPI",
+  "BasePath": "_content/InventorySupply.WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/InventorySupply.WebAPI.props" />
+</Project>

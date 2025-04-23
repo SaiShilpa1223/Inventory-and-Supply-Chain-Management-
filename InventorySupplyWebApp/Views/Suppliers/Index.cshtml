@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Suppliers";
+}
+
+<h1>Suppliers</h1>
+
+<!-- Create Button to Navigate to the Create Page -->
+<a href="@Url.Action("Create", "Suppliers")" class="btn btn-primary mb-3">Create New Supplier</a>
+
+<!-- Table to display suppliers -->
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Contact</th>
+        <th>Address</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var supplier in Model)
+    {
+        <tr>
+            <td>@supplier.Name</td>
+            <td>@supplier.Contact</td>
+            <td>@supplier.Address</td>
+            <td>
+                <!-- Edit and Delete buttons (if needed) -->
+                <a href="@Url.Action("Edit", "Suppliers", new { id = supplier.SupplierId })" class="btn btn-warning btn-sm">Edit</a>
+                <a href="@Url.Action("Details", "Suppliers", new { id = supplier.SupplierId })" class="btn btn-primary btn-sm">Details</a>
+                <a href="@Url.Action("Delete", "Suppliers", new { id = supplier.SupplierId })" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
