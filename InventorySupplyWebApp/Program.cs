@@ -12,7 +12,7 @@ builder.Services.AddDbContext<InventorySupplyDbContext>(options =>
 
 // ✅ Add MVC or Razor support (only call this once)
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddHttpClient();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -24,11 +24,11 @@
             <td>@product.Price</td>
             <td>@(product.Supplier?.Name ?? "No Supplier")</td>
             <td>
-                <!-- Edit and Delete buttons (if needed) -->
-                <a href="@Url.Action("Edit", "Products", new { id = product.ProductId  })" class="btn btn-warning btn-sm">Edit</a>
-                <a href="@Url.Action("Details", "Products", new { id = product.ProductId  })" class="btn btn-primary btn-sm">Details</a>
-                <a href="@Url.Action("Delete", "Products", new { id = product.ProductId  })" class="btn btn-danger btn-sm">Delete</a>
-        </td>                                      
+                <!-- Edit, Details, and Delete buttons -->
+                <a href="@Url.Action("Edit", "Products", new { id = product.ProductId })" class="btn btn-warning btn-sm">Edit</a>
+                <a href="@Url.Action("Details", "Products", new { id = product.ProductId })" class="btn btn-primary btn-sm">Details</a>
+                <a href="@Url.Action("Delete", "Products", new { id = product.ProductId })" class="btn btn-danger btn-sm">Delete</a>
+            </td>
         </tr>
     }
     </tbody>

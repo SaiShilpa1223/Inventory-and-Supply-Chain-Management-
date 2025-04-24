@@ -26,3 +26,4 @@
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.DAL/obj/Debug/net9.0/InventorySupply.DAL.pdb
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.DAL/obj/Debug/net9.0/InventorySupply.DAL.genruntimeconfig.cache
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.DAL/obj/Debug/net9.0/ref/InventorySupply.DAL.dll
+/Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.DAL/obj/Debug/net9.0/InventorySupply.DAL.sourcelink.json

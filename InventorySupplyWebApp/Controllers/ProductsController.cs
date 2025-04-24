@@ -1,25 +1,37 @@
+using System.Text;
 using InventorySupply.DAL;
 using InventorySupplyWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace InventorySupplyWebApp.Controllers;
+
 public class ProductsController : Controller
 {
     private readonly InventorySupplyDbContext _context;
-    
-    public ProductsController(InventorySupplyDbContext context)
+    private readonly HttpClient _httpClient;
+
+    public ProductsController(InventorySupplyDbContext context, HttpClient httpClient)
     {
         _context = context;
+        _httpClient = httpClient;
     }
-    
+
     public async Task<IActionResult> Index()
     {
-        // This includes the Supplier data automatically using a JOIN
-        var products = await _context.Products
-            .Include(p => p.Supplier)
-            .ToListAsync();
+        // Fetch the raw JSON string from the API
+        var responseString = await _httpClient.GetStringAsync("http://localhost:5146/api/products");
+
+        // Deserialize the response into a List<InventorySupply.DAL.Models.Product>
+        var products = JsonConvert.DeserializeObject<List<InventorySupply.DAL.Models.Product>>(responseString);
+
+        // If the response is null, use an empty list
+        if (products == null)
+        {
+            products = new List<InventorySupply.DAL.Models.Product>();
+        }
 
         return View(products);
     }
@@ -33,7 +45,7 @@ public class ProductsController : Controller
         }
 
         ViewBag.Suppliers = new SelectList(suppliers, "SupplierId", "Name");
-        return View(); 
+        return View();
     }
 
     [HttpPost]
@@ -42,34 +54,29 @@ public class ProductsController : Controller
     {
         if (ModelState.IsValid)
         {
-            var supplier = await _context.Suppliers
-                .FirstOrDefaultAsync(s => s.SupplierId == viewModel.SupplierId);
+            using var httpClient = new HttpClient();
+            var jsonContent = new StringContent(
+                System.Text.Json.JsonSerializer.Serialize(viewModel), // full qualification
+                Encoding.UTF8,
+                "application/json"
+            );
 
-            if (supplier == null)
+            var response = await httpClient.PostAsync("http://localhost:5146/api/products", jsonContent);
+
+            if (response.IsSuccessStatusCode)
             {
-                ModelState.AddModelError("SupplierId", "Invalid supplier.");
-            }
-            else
-            {
-                var product = new InventorySupply.DAL.Models.Product
-                {
-                    Name = viewModel.Name,
-                    Description = viewModel.Description,
-                    Price = viewModel.Price,
-                    SupplierId = viewModel.SupplierId,
-                    //Supplier = supplier
-                };
-                
-                _context.Products.Add(product);
-                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            // Optionally log response error
+            var errorResponse = await response.Content.ReadAsStringAsync();
+            ModelState.AddModelError(string.Empty, "API Error: " + errorResponse);
         }
 
         ViewBag.Suppliers = new SelectList(_context.Suppliers.ToList(), "SupplierId", "Name", viewModel.SupplierId);
         return View(viewModel);
     }
-    
+
     public async Task<IActionResult> Edit(int id)
     {
         var product = await _context.Products.FindAsync(id);
@@ -85,10 +92,9 @@ public class ProductsController : Controller
         };
 
         ViewBag.Suppliers = new SelectList(_context.Suppliers, "SupplierId", "Name", product.SupplierId);
-
-        return View(viewModel); // Edit.cshtml
+        return View(viewModel);
     }
-    
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, ProductCreateViewModel viewModel)
@@ -98,18 +104,29 @@ public class ProductsController : Controller
 
         if (ModelState.IsValid)
         {
-            var product = await _context.Products.FindAsync(id);
-            if (product == null) return NotFound();
+            // Map the form data to the API request body
+            var productToUpdate = new InventorySupply.DAL.Models.Product
+            {
+                ProductId = viewModel.ProductId,
+                Name = viewModel.Name,
+                Description = viewModel.Description,
+                Price = viewModel.Price,
+                SupplierId = viewModel.SupplierId
+            };
 
-            product.Name = viewModel.Name;
-            product.Description = viewModel.Description;
-            product.Price = viewModel.Price;
-            product.SupplierId = viewModel.SupplierId;
+            // Make the PUT request to the API to update the product
+            var response =
+                await _httpClient.PutAsJsonAsync($"http://localhost:5146/api/products/{id}", productToUpdate);
 
-            _context.Update(product);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction(nameof(Index));
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction(nameof(Index)); // Redirect back to the product list
+            }
+            else
+            {
+                // Handle the failure
+                ModelState.AddModelError("", "Failed to update the product.");
+            }
         }
 
         ViewBag.Suppliers = new SelectList(_context.Suppliers, "SupplierId", "Name", viewModel.SupplierId);
@@ -118,10 +135,19 @@ public class ProductsController : Controller
 
     public async Task<IActionResult> Details(int id)
     {
-        var product = await _context.Products
-            .Include(p => p.Supplier)
-            .FirstOrDefaultAsync(p => p.ProductId == id);
-        if (product == null) return NotFound();
+        // Fetch the product details from the external API
+        var responseString = await _httpClient.GetStringAsync($"http://localhost:5146/api/products/{id}");
+
+        // Deserialize the response into a Product object
+        var product = JsonConvert.DeserializeObject<InventorySupply.DAL.Models.Product>(responseString);
+
+        // Check if product is null
+        if (product == null)
+        {
+            return NotFound();
+        }
+
+        // Return the product to the Details view
         return View(product);
     }
 
@@ -130,22 +156,24 @@ public class ProductsController : Controller
         var product = await _context.Products
             .Include(p => p.Supplier)
             .FirstOrDefaultAsync(p => p.ProductId == id);
-        if (product == null) return NotFound();
-        return View(product); // confirmation view
+        if (product == null)
+            return NotFound();
+        return View(product); // Confirmation view
     }
 
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        var product = await _context.Products.FindAsync(id);
-        if (product != null)
+        // Delete via API
+        var response = await _httpClient.DeleteAsync($"http://localhost:5146/api/products/{id}");
+
+        if (response.IsSuccessStatusCode)
         {
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index)); // Redirect to Index if deletion is successful
         }
-        return RedirectToAction(nameof(Index));
+
+        // If deletion fails, return an error page or show an appropriate message
+        return View("Error");
     }
-    
-    
 }

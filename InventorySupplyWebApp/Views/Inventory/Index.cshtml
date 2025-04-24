@@ -25,13 +25,9 @@
             <td>@item.QuantityInStock</td>
             <td>@item.ReorderLevel</td>
             <td>@item.LastModified.ToShortDateString()</td>
+            <td>@(item.DateAdded.ToShortDateString())</td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.InventoryItemId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.InventoryItemId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.InventoryItemId">Delete</a>
-            </td>
-            <td>
-                <!-- Edit and Delete buttons (if needed) -->
+                <!-- Edit, Details, and Delete buttons -->
                 <a href="@Url.Action("Edit", "Inventory", new { id = item.InventoryItemId })" class="btn btn-warning btn-sm">Edit</a>
                 <a href="@Url.Action("Details", "Inventory", new { id = item.InventoryItemId })" class="btn btn-primary btn-sm">Details</a>
                 <a href="@Url.Action("Delete", "Inventory", new { id = item.InventoryItemId })" class="btn btn-danger btn-sm">Delete</a>

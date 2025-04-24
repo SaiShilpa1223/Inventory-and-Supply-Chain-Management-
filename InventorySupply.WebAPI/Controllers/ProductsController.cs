@@ -22,7 +22,10 @@ public class ProductsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetProducts()
     {
-        var products = await _context.Products.ToListAsync();
+        var products = await _context.Products
+            .Include(p => p.Supplier) // 👈 This is required
+            .ToListAsync();
+        // var products = await _context.Products.ToListAsync();
         return Ok(products);
     }
 

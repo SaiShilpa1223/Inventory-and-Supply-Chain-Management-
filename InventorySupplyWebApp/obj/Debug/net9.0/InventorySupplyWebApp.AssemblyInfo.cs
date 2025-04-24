@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InventorySupplyWebApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4b5f417295b435ec8550f89f8ff76245d8415c85")]
 [assembly: System.Reflection.AssemblyProductAttribute("InventorySupplyWebApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InventorySupplyWebApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

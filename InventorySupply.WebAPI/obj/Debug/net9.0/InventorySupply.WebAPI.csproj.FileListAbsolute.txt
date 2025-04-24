@@ -184,3 +184,4 @@
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.WebAPI/obj/Debug/net9.0/InventorySupply.WebAPI.pdb
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.WebAPI/obj/Debug/net9.0/InventorySupply.WebAPI.genruntimeconfig.cache
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.WebAPI/obj/Debug/net9.0/ref/InventorySupply.WebAPI.dll
+/Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.WebAPI/obj/Debug/net9.0/InventorySupply.WebAPI.sourcelink.json
