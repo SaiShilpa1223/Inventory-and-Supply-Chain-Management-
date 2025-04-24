@@ -409,6 +409,7 @@
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupplyWebApp/obj/Debug/net9.0/InventorySupplyWebApp.MvcApplicationPartsAssemblyInfo.cache
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupplyWebApp/obj/Debug/net9.0/InventorySupplyWebApp.RazorAssemblyInfo.cache
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupplyWebApp/obj/Debug/net9.0/InventorySupplyWebApp.RazorAssemblyInfo.cs
+/Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupplyWebApp/obj/Debug/net9.0/InventorySupplyWebApp.sourcelink.json
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupplyWebApp/obj/Debug/net9.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupplyWebApp/obj/Debug/net9.0/scopedcss/bundle/InventorySupplyWebApp.styles.css
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupplyWebApp/obj/Debug/net9.0/scopedcss/projectbundle/InventorySupplyWebApp.bundle.scp.css
@@ -492,4 +493,3 @@
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupplyWebApp/obj/Debug/net9.0/InventorySupplyWebApp.pdb
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupplyWebApp/obj/Debug/net9.0/InventorySupplyWebApp.genruntimeconfig.cache
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupplyWebApp/obj/Debug/net9.0/ref/InventorySupplyWebApp.dll
-/Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupplyWebApp/obj/Debug/net9.0/InventorySupplyWebApp.sourcelink.json

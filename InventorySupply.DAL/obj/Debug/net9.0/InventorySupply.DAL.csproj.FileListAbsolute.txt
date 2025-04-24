@@ -21,9 +21,9 @@
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.DAL/obj/Debug/net9.0/InventorySupply.DAL.AssemblyInfoInputs.cache
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.DAL/obj/Debug/net9.0/InventorySupply.DAL.AssemblyInfo.cs
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.DAL/obj/Debug/net9.0/InventorySupply.DAL.csproj.CoreCompileInputs.cache
+/Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.DAL/obj/Debug/net9.0/InventorySupply.DAL.sourcelink.json
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.DAL/obj/Debug/net9.0/InventorySupply.DAL.dll
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.DAL/obj/Debug/net9.0/refint/InventorySupply.DAL.dll
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.DAL/obj/Debug/net9.0/InventorySupply.DAL.pdb
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.DAL/obj/Debug/net9.0/InventorySupply.DAL.genruntimeconfig.cache
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.DAL/obj/Debug/net9.0/ref/InventorySupply.DAL.dll
-/Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.DAL/obj/Debug/net9.0/InventorySupply.DAL.sourcelink.json

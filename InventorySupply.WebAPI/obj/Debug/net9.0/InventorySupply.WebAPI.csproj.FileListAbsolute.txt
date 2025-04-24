@@ -168,6 +168,7 @@
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.WebAPI/obj/Debug/net9.0/InventorySupply.WebAPI.csproj.CoreCompileInputs.cache
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.WebAPI/obj/Debug/net9.0/InventorySupply.WebAPI.MvcApplicationPartsAssemblyInfo.cs
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.WebAPI/obj/Debug/net9.0/InventorySupply.WebAPI.MvcApplicationPartsAssemblyInfo.cache
+/Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.WebAPI/obj/Debug/net9.0/InventorySupply.WebAPI.sourcelink.json
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.WebAPI/obj/Debug/net9.0/scopedcss/bundle/InventorySupply.WebAPI.styles.css
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.WebAPI/obj/Debug/net9.0/staticwebassets.build.json
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.WebAPI/obj/Debug/net9.0/staticwebassets.development.json
@@ -184,4 +185,3 @@
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.WebAPI/obj/Debug/net9.0/InventorySupply.WebAPI.pdb
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.WebAPI/obj/Debug/net9.0/InventorySupply.WebAPI.genruntimeconfig.cache
 /Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.WebAPI/obj/Debug/net9.0/ref/InventorySupply.WebAPI.dll
-/Users/anjuchaudhary/Desktop/InventoryManagementSystemProject/InventoryManagementSystem 2/InventorySupply.WebAPI/obj/Debug/net9.0/InventorySupply.WebAPI.sourcelink.json
