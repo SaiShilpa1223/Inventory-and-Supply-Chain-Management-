@@ -18,5 +18,5 @@ public class ProductCreateViewModel
     public decimal Price { get; set; }
 
     [Required]
-    public int SupplierId { get; set; }
+    public int? SupplierId { get; set; }
 }

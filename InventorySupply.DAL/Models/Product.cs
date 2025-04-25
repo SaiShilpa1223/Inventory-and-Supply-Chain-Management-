@@ -21,7 +21,7 @@ public class Product
 
     // Foreign key
     [Required]
-    public int SupplierId { get; set; }
+    public int? SupplierId { get; set; }
 
     // Navigation property
     public Supplier? Supplier { get; set; }

@@ -165,15 +165,28 @@ public class SuppliersController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        // Delete via API
+        var supplier = await _context.Suppliers
+            .Include(p => p.Products)
+            .FirstOrDefaultAsync(p => p.SupplierId == id);
+
+        if (supplier == null)
+        {
+            return NotFound();
+        }
+
+        // Call the API to delete the supplier
         var response = await _httpClient.DeleteAsync($"http://localhost:5146/api/suppliers/{id}");
 
         if (response.IsSuccessStatusCode)
         {
-            return RedirectToAction(nameof(Index)); // Redirect to Index if deletion is successful
+            // Successfully deleted the supplier, redirect to Index
+            return RedirectToAction(nameof(Index));
         }
 
-        // If deletion fails, return an error page or show an appropriate message
-        return View("Error");
+        // If the delete failed, show an error message and return to the delete view
+        ModelState.AddModelError(string.Empty, "Failed to delete supplier. Please try again.");
+        return View("Delete", supplier);
     }
+
+
 }

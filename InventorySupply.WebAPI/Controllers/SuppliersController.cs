@@ -110,20 +110,51 @@ public class SuppliersController : Controller
         return Ok(new { Message = "Supplier updated successfully" });
     }
 
-    // DELETE: api/suppliers/{id}
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteSupplier(int id)
     {
-        var supplier = await _context.Suppliers.FindAsync(id);
+        // Find the supplier with related products
+        var supplier = await _context.Suppliers
+            .Include(s => s.Products) // Include related products
+            .FirstOrDefaultAsync(s => s.SupplierId == id);
+
         if (supplier == null)
         {
             return NotFound(new { Message = "Supplier not found." });
         }
 
-        _context.Suppliers.Remove(supplier);
-        await _context.SaveChangesAsync();
+        // Disassociate products from the supplier by setting SupplierId to null
+        foreach (var product in supplier.Products)
+        {
+            product.SupplierId = null; // Disassociate the product from the supplier
+        }
 
-        return Ok(new { Message = "Supplier deleted successfully" });
+        // Save changes to update product records
+        try
+        {
+            await _context.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            // Log the exception to see if anything went wrong during SaveChanges
+            return StatusCode(500, new { Message = "Error saving product disassociations.", Details = ex.Message });
+        }
+
+        // Now remove the supplier from the Suppliers table
+        _context.Suppliers.Remove(supplier);
+
+        // Save changes to delete the supplier
+        try
+        {
+            await _context.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            // Log the exception for supplier deletion failure
+            return StatusCode(500, new { Message = "Error deleting supplier.", Details = ex.Message });
+        }
+
+        return Ok(new { Message = "Supplier removed, related products disassociated." });
     }
 
 }
