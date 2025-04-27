@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\InventorySupply.DAL\InventorySupply.DAL.csproj" />
+      <ProjectReference Include="..\InventorySupply.WebAPI\InventorySupply.WebAPI.csproj" />
     </ItemGroup>
 
     <ItemGroup>

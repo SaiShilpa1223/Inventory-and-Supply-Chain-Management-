@@ -1,5 +1,6 @@
 using System.Text;
 using InventorySupply.DAL;
+using InventorySupply.DAL.Models;
 using InventorySupplyWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.DataAnnotations;
@@ -25,12 +26,12 @@ public class InventoryController : Controller
         // Fetch the raw JSON string from the API
         var responseString = await _httpClient.GetStringAsync("http://localhost:5146/api/inventory");
 
-        var inventories = JsonConvert.DeserializeObject<List<InventorySupply.DAL.Models.InventoryItem>>(responseString);
+        var inventories = JsonConvert.DeserializeObject<List<InventoryItem>>(responseString);
 
         // If the response is null, use an empty list
         if (inventories == null)
         {
-            inventories = new List<InventorySupply.DAL.Models.InventoryItem>();
+            inventories = new List<InventoryItem>();
         }
 
         return View(inventories);
@@ -169,7 +170,7 @@ public class InventoryController : Controller
         if (ModelState.IsValid)
         {
             // Map the form data to the API request body
-            var inventoryToUpdate = new InventorySupply.DAL.Models.InventoryItem()
+            var inventoryToUpdate = new InventoryItem()
             {
                 InventoryItemId = viewModel.InventoryItemId,
                 ProductId = viewModel.ProductId,
@@ -203,7 +204,7 @@ public class InventoryController : Controller
         var responseString = await _httpClient.GetStringAsync($"http://localhost:5146/api/inventory/{id}");
 
         // Deserialize the response into a inventory object
-        var inventory = JsonConvert.DeserializeObject<InventorySupply.DAL.Models.InventoryItem>(responseString);
+        var inventory = JsonConvert.DeserializeObject<InventoryItem>(responseString);
 
         // Check if inventory is null
         if (inventory == null)

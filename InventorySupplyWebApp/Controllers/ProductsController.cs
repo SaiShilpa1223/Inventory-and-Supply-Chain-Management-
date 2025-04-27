@@ -25,12 +25,12 @@ public class ProductsController : Controller
         var responseString = await _httpClient.GetStringAsync("http://localhost:5146/api/products");
 
         // Deserialize the response into a List<InventorySupply.DAL.Models.Product>
-        var products = JsonConvert.DeserializeObject<List<InventorySupply.DAL.Models.Product>>(responseString);
+        var products = JsonConvert.DeserializeObject<List<Product>>(responseString);
 
         // If the response is null, use an empty list
         if (products == null)
         {
-            products = new List<InventorySupply.DAL.Models.Product>();
+            products = new List<Product>();
         }
 
         return View(products);
@@ -139,7 +139,7 @@ public class ProductsController : Controller
         var responseString = await _httpClient.GetStringAsync($"http://localhost:5146/api/products/{id}");
 
         // Deserialize the response into a Product object
-        var product = JsonConvert.DeserializeObject<InventorySupply.DAL.Models.Product>(responseString);
+        var product = JsonConvert.DeserializeObject<Product>(responseString);
 
         // Check if product is null
         if (product == null)
