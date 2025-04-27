@@ -25,12 +25,12 @@ public class SuppliersController : Controller
         // Fetch the raw JSON string from the API
         var responseString = await _httpClient.GetStringAsync("http://localhost:5146/api/suppliers");
 
-        var suppliers = JsonConvert.DeserializeObject<List<InventorySupply.DAL.Models.Supplier>>(responseString);
+        var suppliers = JsonConvert.DeserializeObject<List<Supplier>>(responseString);
 
         // If the response is null, use an empty list
         if (suppliers == null)
         {
-            suppliers = new List<InventorySupply.DAL.Models.Supplier>();
+            suppliers = new List<Supplier>();
         }
 
         return View(suppliers);

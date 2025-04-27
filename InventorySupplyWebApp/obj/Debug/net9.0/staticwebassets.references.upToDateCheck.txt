@@ -1,0 +1,6 @@
+C:\Users\004KMB744\source\repos\SaiShilpa1223\Inventory-and-Supply-Chain-Management-\InventorySupply.WebAPI\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\004KMB744\source\repos\SaiShilpa1223\Inventory-and-Supply-Chain-Management-\InventorySupply.WebAPI\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\004KMB744\source\repos\SaiShilpa1223\Inventory-and-Supply-Chain-Management-\InventorySupply.WebAPI\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\004KMB744\source\repos\SaiShilpa1223\Inventory-and-Supply-Chain-Management-\InventorySupply.WebAPI\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\004KMB744\source\repos\SaiShilpa1223\Inventory-and-Supply-Chain-Management-\InventorySupply.WebAPI\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\004KMB744\source\repos\SaiShilpa1223\Inventory-and-Supply-Chain-Management-\InventorySupply.WebAPI\obj\Debug\net9.0\staticwebassets.build.json
