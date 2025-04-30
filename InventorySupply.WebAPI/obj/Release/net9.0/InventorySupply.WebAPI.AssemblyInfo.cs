@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InventorySupply.WebAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+529759655cd9a54e9ebc37d0f7f7db6284b86990")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+734be2e77af30a67a983cf9a350c6da232a2b347")]
 [assembly: System.Reflection.AssemblyProductAttribute("InventorySupply.WebAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InventorySupply.WebAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

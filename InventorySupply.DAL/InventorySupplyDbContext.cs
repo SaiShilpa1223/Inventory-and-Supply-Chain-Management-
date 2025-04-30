@@ -13,7 +13,10 @@ public class InventorySupplyDbContext : DbContext
     public DbSet<Supplier> Suppliers { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<InventoryItem> InventoryItems { get; set; }
-    
+
+    public DbSet<User> Users => Set<User>();
+    public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);;
@@ -69,5 +72,10 @@ public class InventorySupplyDbContext : DbContext
             //     ReorderLevel = 1,
             // }
         );
+        modelBuilder.Entity<User>()
+           .HasMany(u => u.RefreshTokens)
+           .WithOne(rt => rt.User)
+           .HasForeignKey(rt => rt.UserId)
+           .OnDelete(DeleteBehavior.Cascade);
     }
 }

@@ -1,15 +1,15 @@
 
-GET http://localhost:5146/api/products
+GET http://localhost:7223/api/products
 Accept: application/json
 ###
 
 ### Get Product by ID
-GET http://localhost:5146/api/products/3
+GET http://localhost:7223/api/products/3
 Accept: application/json
 ###
 
 ### Add New Product
-POST http://localhost:5146/api/products
+POST http://localhost:7223/api/products
 Content-Type: application/json
 
 {
@@ -20,7 +20,7 @@ Content-Type: application/json
 }
 
 ### Update Product
-PUT http://localhost:5146/api/products/7
+PUT http://localhost:7223/api/products/7
 Content-Type: application/json
 
 {
@@ -32,20 +32,20 @@ Content-Type: application/json
 }
 
 ### Delete Product
-DELETE http://localhost:5146/api/products/1
+DELETE http://localhost:7223/api/products/1
 
 ### SUPPLIER API
 
-GET http://localhost:5146/api/suppliers
+GET http://localhost:7223/api/suppliers
 Accept: application/json
 ###
 
 ### Get Supplier by ID
-GET http://localhost:5146/api/suppliers/1
+GET http://localhost:7223/api/suppliers/1
 Accept: application/json
 
 ### Add New Supplier
-POST http://localhost:5146/api/suppliers
+POST http://localhost:7223/api/suppliers
 Content-Type: application/json
 
 {
@@ -56,7 +56,7 @@ Content-Type: application/json
 }
 
 ### Update Supplier
-PUT http://localhost:5146/api/suppliers/4
+PUT http://localhost:7223/api/suppliers/4
 Content-Type: application/json
 
 {
@@ -67,20 +67,20 @@ Content-Type: application/json
 }
 
 ### Delete Product
-DELETE http://localhost:5146/api/suppliers/7
+DELETE http://localhost:7223/api/suppliers/7
 
 ### INVENTORY API
 
-GET http://localhost:5146/api/inventory
+GET http://localhost:7223/api/inventory
 Accept: application/json
 ###
 
-GET http://localhost:5146/api/inventory/2
+GET http://localhost:7223/api/inventory/2
 Accept: application/json
 ###
 
 ### Add New Inventory
-POST http://localhost:5146/api/inventory
+POST http://localhost:7223/api/inventory
 Content-Type: application/json
 
 {
@@ -90,7 +90,7 @@ Content-Type: application/json
 }
 
 ### Update Inventory
-PUT http://localhost:5146/api/inventory/2
+PUT http://localhost:7223/api/inventory/2
 Content-Type: application/json
 
 {
@@ -101,4 +101,4 @@ Content-Type: application/json
 }
 
 ### Delete Inventory
-DELETE http://localhost:5146/api/inventory/7
+DELETE http://localhost:7223/api/inventory/7

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\004KMB744\\source\\repos\\SaiShilpa1223\\Inventory-and-Supply-Chain-Management-\\InventorySupply.WebAPI\\InventorySupply.WebAPI.csproj": {}
+    "C:\\Users\\004CRT744\\source\\repos\\Inventory-and-Supply-Chain\\InventorySupply.WebAPI\\InventorySupply.WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\004KMB744\\source\\repos\\SaiShilpa1223\\Inventory-and-Supply-Chain-Management-\\InventorySupply.DAL\\InventorySupply.DAL.csproj": {
+    "C:\\Users\\004CRT744\\source\\repos\\Inventory-and-Supply-Chain\\InventorySupply.DAL\\InventorySupply.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\004KMB744\\source\\repos\\SaiShilpa1223\\Inventory-and-Supply-Chain-Management-\\InventorySupply.DAL\\InventorySupply.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\004CRT744\\source\\repos\\Inventory-and-Supply-Chain\\InventorySupply.DAL\\InventorySupply.DAL.csproj",
         "projectName": "InventorySupply.DAL",
-        "projectPath": "C:\\Users\\004KMB744\\source\\repos\\SaiShilpa1223\\Inventory-and-Supply-Chain-Management-\\InventorySupply.DAL\\InventorySupply.DAL.csproj",
-        "packagesPath": "C:\\Users\\004KMB744\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\004KMB744\\source\\repos\\SaiShilpa1223\\Inventory-and-Supply-Chain-Management-\\InventorySupply.DAL\\obj\\",
+        "projectPath": "C:\\Users\\004CRT744\\source\\repos\\Inventory-and-Supply-Chain\\InventorySupply.DAL\\InventorySupply.DAL.csproj",
+        "packagesPath": "C:\\Users\\004CRT744\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\004CRT744\\source\\repos\\Inventory-and-Supply-Chain\\InventorySupply.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\004KMB744\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\004CRT744\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -94,35 +94,29 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.Net.Sdk.Compilers.Toolset",
-              "version": "[9.0.300-preview.0.25177.5, 9.0.300-preview.0.25177.5]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300-preview.0.25177.5/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\004KMB744\\source\\repos\\SaiShilpa1223\\Inventory-and-Supply-Chain-Management-\\InventorySupply.WebAPI\\InventorySupply.WebAPI.csproj": {
+    "C:\\Users\\004CRT744\\source\\repos\\Inventory-and-Supply-Chain\\InventorySupply.WebAPI\\InventorySupply.WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\004KMB744\\source\\repos\\SaiShilpa1223\\Inventory-and-Supply-Chain-Management-\\InventorySupply.WebAPI\\InventorySupply.WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\004CRT744\\source\\repos\\Inventory-and-Supply-Chain\\InventorySupply.WebAPI\\InventorySupply.WebAPI.csproj",
         "projectName": "InventorySupply.WebAPI",
-        "projectPath": "C:\\Users\\004KMB744\\source\\repos\\SaiShilpa1223\\Inventory-and-Supply-Chain-Management-\\InventorySupply.WebAPI\\InventorySupply.WebAPI.csproj",
-        "packagesPath": "C:\\Users\\004KMB744\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\004KMB744\\source\\repos\\SaiShilpa1223\\Inventory-and-Supply-Chain-Management-\\InventorySupply.WebAPI\\obj\\",
+        "projectPath": "C:\\Users\\004CRT744\\source\\repos\\Inventory-and-Supply-Chain\\InventorySupply.WebAPI\\InventorySupply.WebAPI.csproj",
+        "packagesPath": "C:\\Users\\004CRT744\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\004CRT744\\source\\repos\\Inventory-and-Supply-Chain\\InventorySupply.WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\004KMB744\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\004CRT744\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -137,8 +131,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\004KMB744\\source\\repos\\SaiShilpa1223\\Inventory-and-Supply-Chain-Management-\\InventorySupply.DAL\\InventorySupply.DAL.csproj": {
-                "projectPath": "C:\\Users\\004KMB744\\source\\repos\\SaiShilpa1223\\Inventory-and-Supply-Chain-Management-\\InventorySupply.DAL\\InventorySupply.DAL.csproj"
+              "C:\\Users\\004CRT744\\source\\repos\\Inventory-and-Supply-Chain\\InventorySupply.DAL\\InventorySupply.DAL.csproj": {
+                "projectPath": "C:\\Users\\004CRT744\\source\\repos\\Inventory-and-Supply-Chain\\InventorySupply.DAL\\InventorySupply.DAL.csproj"
               }
             }
           }
@@ -153,7 +147,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -166,6 +160,10 @@
             "FluentValidation.AspNetCore": {
               "target": "Package",
               "version": "[11.3.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[9.0.4, )"
             },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
@@ -205,12 +203,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.Net.Sdk.Compilers.Toolset",
-              "version": "[9.0.300-preview.0.25177.5, 9.0.300-preview.0.25177.5]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -219,7 +211,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300-preview.0.25177.5/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
