@@ -18,6 +18,8 @@
         <th>Name</th>
         <th>Description</th>
         <th>Price</th>
+         <th>Quantity</th>
+         <th>Warehouse</th>
         <th>Supplier</th>
         <th>Actions</th>
     </tr>
@@ -29,6 +31,8 @@
             <td>@product.Name</td>
             <td>@product.Description</td>
             <td>@product.Price</td>
+            <td>@product.Quantity</td>
+            <td>@(product.Warehouse?.Name ?? "No Warehouse")</td>
             <td>@(product.Supplier?.Name ?? "No Supplier")</td>
             <td>
                 <!-- Edit, Details, and Delete buttons -->

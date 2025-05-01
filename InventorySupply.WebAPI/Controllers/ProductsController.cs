@@ -24,7 +24,8 @@ public class ProductsController : ControllerBase
     public async Task<IActionResult> GetProducts()
     {
         var products = await _context.Products
-            .Include(p => p.Supplier) // 👈 This is required
+            .Include(p => p.Supplier)
+            .Include(q => q.Warehouse)
             .ToListAsync();
         // var products = await _context.Products.ToListAsync();
         return Ok(products);
@@ -47,7 +48,7 @@ public class ProductsController : ControllerBase
     }
     
     [HttpPost]
-    [Authorize(Roles = "Manager,Admin")]
+    //[Authorize(Roles = "Manager,Admin")]
     public async Task<IActionResult> CreateProduct([FromBody] Product product)
     {
         if (!ModelState.IsValid)
@@ -63,7 +64,7 @@ public class ProductsController : ControllerBase
     
     // PUT: api/products/{id}
     [HttpPut("{id}")]
-    [Authorize(Roles = "Manager,Admin")]
+    //[Authorize(Roles = "Manager,Admin")]
     public async Task<IActionResult> PutProduct(int id, [FromBody] Product product)
     {
         if (id != product.ProductId)

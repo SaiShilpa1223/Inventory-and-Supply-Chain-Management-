@@ -18,10 +18,17 @@ public class Product
     [Range(0.01, double.MaxValue)]
     public decimal Price { get; set; }
 
+    [Required]
+    public int Quantity { get; set; }
+
     // Foreign key
     [Required]
     public int? SupplierId { get; set; }
+    [Required]
+    public int? Id { get; set; }
 
     // Navigation property
     public Supplier? Supplier { get; set; }
+    // Navigation property
+    public Warehouse? Warehouse { get; set; }
 }

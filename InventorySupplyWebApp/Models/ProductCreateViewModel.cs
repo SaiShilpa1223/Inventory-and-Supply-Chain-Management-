@@ -21,6 +21,12 @@ public class ProductCreateViewModel
 
     [Required]
     public int? SupplierId { get; set; }
+    [Required]
+    public int? Id { get; set; }
 
-    [BindNever] public IEnumerable<SelectListItem> Products { get; set; }
+    [Required]
+    public int Quantity { get; set; }
+
+    [BindNever] public IEnumerable<SelectListItem> Suppliers { get; set; }
+    [BindNever] public IEnumerable<SelectListItem> Warehouses { get; set; }
 }

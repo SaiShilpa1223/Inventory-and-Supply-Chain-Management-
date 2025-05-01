@@ -16,7 +16,8 @@ Content-Type: application/json
   "name": "Testeding",
   "description": "description for test",
   "price": 75.86,
-  "supplierId": 1
+  "supplierId": 1,
+  "id":2
 }
 
 ### Update Product

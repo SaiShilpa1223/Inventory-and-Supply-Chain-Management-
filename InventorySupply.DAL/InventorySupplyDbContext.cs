@@ -26,6 +26,7 @@ public class InventorySupplyDbContext : DbContext
             .HasOne(p => p.Supplier)
             .WithMany(s => s.Products)
             .HasForeignKey(p => p.SupplierId)
+            .HasForeignKey(p => p.Id)
             .OnDelete(DeleteBehavior.Restrict); // Optional, prevent cascading delete
 
         // Configure the foreign key for InventoryItem -> Product relationship

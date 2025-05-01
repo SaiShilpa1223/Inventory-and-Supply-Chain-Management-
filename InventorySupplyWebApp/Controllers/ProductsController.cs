@@ -42,27 +42,43 @@ public class ProductsController : Controller
     public IActionResult Create()
     {
         var suppliers = _context.Suppliers.ToList();
+        var warehouses = _context.Warehouses.ToList();
         if (suppliers == null || !suppliers.Any())
         {
             Console.WriteLine("No suppliers found in database.");
         }
 
-        ViewBag.Suppliers = new SelectList(suppliers, "SupplierId", "Name");
-        return View();
+        if (warehouses == null || !warehouses.Any())
+        {
+            Console.WriteLine("No warehouses found in database.");
+        }
+
+        //ViewBag.Suppliers = new SelectList(suppliers, "SupplierId", "Name");
+        //ViewBag.Warehouses = new SelectList(warehouses, "WarehouseId", "Name");
+        var vm = new ProductCreateViewModel
+       {
+            Suppliers = suppliers.Select(s => new SelectListItem(s.Name, s.SupplierId.ToString())),
+            Warehouses = warehouses.Select(w => new SelectListItem(w.Name, w.Id.ToString()))
+       };
+        
+              return View(vm);
+        //return View();
     }
 
     [HttpPost, Authorize(Roles = "Manager,Admin")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(ProductCreateViewModel viewModel)
     {
+        ModelState.Remove("Suppliers");
+        ModelState.Remove("Warehouses");
         if (ModelState.IsValid)
         {
             using var httpClient = new HttpClient();
             var jsonContent = new StringContent(
-                System.Text.Json.JsonSerializer.Serialize(viewModel), // full qualification
+                System.Text.Json.JsonSerializer.Serialize(viewModel),
                 Encoding.UTF8,
                 "application/json"
-            );
+            );            
 
             var response = await httpClient.PostAsync("http://localhost:5146/api/products", jsonContent);
 
@@ -83,6 +99,8 @@ public class ProductsController : Controller
     public async Task<IActionResult> Edit(int id)
     {
         var product = await _context.Products.FindAsync(id);
+        var suppliers = _context.Suppliers.ToList();
+        var warehouses = _context.Warehouses.ToList();
         if (product == null) return NotFound();
 
         var viewModel = new ProductCreateViewModel
@@ -91,11 +109,29 @@ public class ProductsController : Controller
             Name = product.Name,
             Description = product.Description,
             Price = product.Price,
-            SupplierId = (int)product.SupplierId
+            Quantity = product.Quantity,
+            SupplierId = (int)product.SupplierId,
+            Id = (int)product.Id
         };
 
-        ViewBag.Suppliers = new SelectList(_context.Suppliers, "SupplierId", "Name", product.SupplierId);
-        return View(viewModel);
+        //ViewBag.Suppliers = new SelectList(_context.Suppliers, "SupplierId", "Name", product.SupplierId);
+        //ViewBag.Suppliers = new SelectList(_context.Suppliers, "SupplierId", "Name", product.SupplierId);
+        //return View(viewModel);
+
+        var vm = new ProductCreateViewModel
+        {
+            Suppliers = suppliers.Select(s => new SelectListItem(s.Name, s.SupplierId.ToString())),
+            Warehouses = warehouses.Select(w => new SelectListItem(w.Name, w.Id.ToString())),
+            ProductId = product.ProductId,
+            Name = product.Name,
+            Description = product.Description,
+            Price = product.Price,
+            Quantity = product.Quantity,
+            SupplierId = (int)product.SupplierId,
+            Id = (int)product.Id
+        };
+
+        return View(vm);
     }
 
     [HttpPost, Authorize(Roles = "Manager,Admin")]
@@ -105,6 +141,8 @@ public class ProductsController : Controller
         if (id != viewModel.ProductId)
             return NotFound();
 
+        ModelState.Remove("Suppliers");
+        ModelState.Remove("Warehouses");
         if (ModelState.IsValid)
         {
             // Map the form data to the API request body
@@ -114,7 +152,9 @@ public class ProductsController : Controller
                 Name = viewModel.Name,
                 Description = viewModel.Description,
                 Price = viewModel.Price,
-                SupplierId = viewModel.SupplierId
+                SupplierId = viewModel.SupplierId,
+                Quantity = viewModel.Quantity,
+                Id = viewModel.Id
             };
 
             // Make the PUT request to the API to update the product
