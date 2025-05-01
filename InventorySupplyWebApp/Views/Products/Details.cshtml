@@ -13,6 +13,12 @@
         <dt class="col-sm-2">Price</dt>
         <dd class="col-sm-10">@Model.Price.ToString("C")</dd>
 
+        <dt class="col-sm-2">Quantity</dt>
+        <dd class="col-sm-10">@Model.Quantity.ToString("C")</dd>
+
+        <dt class="col-sm-2">Warehouse</dt>
+        <dd class="col-sm-10">@(Model.Warehouse?.Name ?? "No Warehouse")</dd>
+
         <dt class="col-sm-2">Supplier</dt>
         <dd class="col-sm-10">@(Model.Supplier?.Name ?? "No Supplier")</dd>
     </dl>

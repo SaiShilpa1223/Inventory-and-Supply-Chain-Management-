@@ -1,0 +1,32 @@
+﻿@model IEnumerable<InventorySupply.DAL.Models.Warehouse>
+@{
+    ViewData["Title"] = "Warehouses";
+}
+
+<h2>Warehouses</h2>
+<a asp-action="Create" class="btn btn-primary">Add Warehouse</a>
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var warehouse in Model)
+        {
+            <tr>
+                <td>@warehouse.Name</td>
+                <td>@warehouse.Location</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@warehouse.Id" class="btn btn-sm btn-warning">Create</a>
+                    <a asp-action="Details" asp-route-id="@warehouse.Id" class="btn btn-sm btn-info">Details</a>
+                    <a asp-action="Edit" asp-route-id="@warehouse.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Details" asp-route-id="@warehouse.Id" class="btn btn-sm btn-info">Delete</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

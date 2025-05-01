@@ -20,7 +20,7 @@ public class WarehouseController : ControllerBase
     {
         var warehouses = await _context.Warehouses
             .Include(w => w.InventoryItems)
-            .ThenInclude(i => i.Product)
+            .ThenInclude(i => (i as InventoryItem).Product) // Cast 'i' to 'InventoryItem'
             .ToListAsync();
 
         return Ok(warehouses);
@@ -32,7 +32,7 @@ public class WarehouseController : ControllerBase
     {
         var warehouse = await _context.Warehouses
             .Include(w => w.InventoryItems)
-            .ThenInclude(i => i.Product)
+            .ThenInclude(i => (i as InventoryItem).Product) // Cast 'i' to 'InventoryItem'
             .FirstOrDefaultAsync(w => w.Id == id);
 
         if (warehouse == null)

@@ -24,16 +24,36 @@ public class ProductsController : Controller
 
     public async Task<IActionResult> Index()
     {
+        var warehouses = _context.Warehouses.ToList();
         // Fetch the raw JSON string from the API
         var responseString = await _httpClient.GetStringAsync("http://localhost:5146/api/products");
 
         // Deserialize the response into a List<InventorySupply.DAL.Models.Product>
         var products = JsonConvert.DeserializeObject<List<Product>>(responseString);
 
-        // If the response is null, use an empty list
+        var warehouseIds = products
+                .Where(p => p.Id != 0)
+                .Select(p => p.Id)
+                .Distinct()
+                .ToList();
+
+        var warehouseLookup = warehouses.ToDictionary(w => w.Id);
+
+        foreach (var product in products)
+        {
+            if (warehouseLookup.TryGetValue((int)product.Id, out var wh))
+            {
+                product.Warehouse = wh;
+            }
+            else
+            {
+                product.Warehouse = null;
+            }
+        }
+
         if (products == null)
         {
-            products = new List<Product>();
+            products = new List<Product>();            
         }
 
         return View(products);
@@ -178,11 +198,14 @@ public class ProductsController : Controller
 
     public async Task<IActionResult> Details(int id)
     {
+        var warehouses = _context.Warehouses.ToList();
         // Fetch the product details from the external API
         var responseString = await _httpClient.GetStringAsync($"http://localhost:5146/api/products/{id}");
 
         // Deserialize the response into a Product object
-        var product = JsonConvert.DeserializeObject<Product>(responseString);
+        var product = JsonConvert.DeserializeObject<Product>(responseString);        
+
+        var warehouseLookup = warehouses.ToDictionary(w => w.Id);
 
         // Check if product is null
         if (product == null)
@@ -190,6 +213,14 @@ public class ProductsController : Controller
             return NotFound();
         }
 
+        if (warehouseLookup.TryGetValue((int)product.Id, out var wh))
+        {
+            product.Warehouse = wh;
+        }
+        else
+        {
+            product.Warehouse = null;
+        }
         // Return the product to the Details view
         return View(product);
     }
