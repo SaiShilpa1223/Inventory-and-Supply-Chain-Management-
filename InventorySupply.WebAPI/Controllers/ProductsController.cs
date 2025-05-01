@@ -1,5 +1,6 @@
 using InventorySupply.DAL;
 using InventorySupply.DAL.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -46,6 +47,7 @@ public class ProductsController : ControllerBase
     }
     
     [HttpPost]
+    [Authorize(Roles = "Manager,Admin")]
     public async Task<IActionResult> CreateProduct([FromBody] Product product)
     {
         if (!ModelState.IsValid)
@@ -61,6 +63,7 @@ public class ProductsController : ControllerBase
     
     // PUT: api/products/{id}
     [HttpPut("{id}")]
+    [Authorize(Roles = "Manager,Admin")]
     public async Task<IActionResult> PutProduct(int id, [FromBody] Product product)
     {
         if (id != product.ProductId)
@@ -76,6 +79,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Manager,Admin")]
     public async Task<IActionResult> DeleteProduct(int id)
     {
         var product = await _context.Products.FindAsync(id);

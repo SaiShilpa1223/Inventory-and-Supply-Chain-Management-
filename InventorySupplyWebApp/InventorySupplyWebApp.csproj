@@ -7,6 +7,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Include="Pages\.DS_Store" />
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\InventorySupply.DAL\InventorySupply.DAL.csproj" />
       <ProjectReference Include="..\InventorySupply.WebAPI\InventorySupply.WebAPI.csproj" />
     </ItemGroup>

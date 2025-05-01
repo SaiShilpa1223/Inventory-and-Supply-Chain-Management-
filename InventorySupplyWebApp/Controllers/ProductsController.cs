@@ -1,6 +1,8 @@
 using System.Text;
 using InventorySupply.DAL;
+using InventorySupply.DAL.Models;
 using InventorySupplyWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +10,7 @@ using Newtonsoft.Json;
 
 namespace InventorySupplyWebApp.Controllers;
 
+[Authorize]
 public class ProductsController : Controller
 {
     private readonly InventorySupplyDbContext _context;
@@ -48,7 +51,7 @@ public class ProductsController : Controller
         return View();
     }
 
-    [HttpPost]
+    [HttpPost, Authorize(Roles = "Manager,Admin")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(ProductCreateViewModel viewModel)
     {
@@ -88,14 +91,14 @@ public class ProductsController : Controller
             Name = product.Name,
             Description = product.Description,
             Price = product.Price,
-            SupplierId = product.SupplierId
+            SupplierId = (int)product.SupplierId
         };
 
         ViewBag.Suppliers = new SelectList(_context.Suppliers, "SupplierId", "Name", product.SupplierId);
         return View(viewModel);
     }
 
-    [HttpPost]
+    [HttpPost, Authorize(Roles = "Manager,Admin")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, ProductCreateViewModel viewModel)
     {
@@ -161,7 +164,7 @@ public class ProductsController : Controller
         return View(product); // Confirmation view
     }
 
-    [HttpPost, ActionName("Delete")]
+    [HttpPost, ActionName("Delete"), Authorize(Roles = "Manager,Admin")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {

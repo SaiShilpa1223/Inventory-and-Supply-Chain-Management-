@@ -14,43 +14,67 @@
             <div class="container">
                 <a class="navbar-brand text-primary fw-bold" href="@Url.Action("Index", "Home")">InventorySupplyWebApp</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="@Url.Action("Index", "Products")">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="@Url.Action("Index", "Suppliers")">Suppliers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="@Url.Action("Index", "Inventory")">Inventory</a>
-                        </li>
+                        @if (User.Identity.IsAuthenticated)
+
+                        {
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="@Url.Action("Index", "Products")">Products</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="@Url.Action("Index", "Suppliers")">Suppliers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="@Url.Action("Index", "Inventory")">Inventory</a>
+                            </li>
+
+                        }
                     </ul>
-                </div>
+                    <ul class="navbar-nav">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <form method="post" asp-controller="Account" asp-action="Logout" id="logoutForm">
+                                    <button type="submit" class="btn btn-outline-secondary">Logout</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                        }
+                    </ul>
             </div>
-        </nav>
-    </header>
-
-    <div class="container">
-        <main role="main" class="pb-5">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="bg-light py-4 mt-5">
-        <div class="container text-center">
-            <p class="text-muted">&copy; 2025 InventorySupplyWebApp. All Rights Reserved.</p>
-            <p class="text-muted">For support, contact <a href="mailto:support@inventorysystem.com">support@inventorysystem.com</a></p>
         </div>
-    </footer>
+    </nav>
+</header>
 
-    <!-- Add JavaScript Libraries -->
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+<div class="container">
+    <main role="main" class="pb-5">
+        @RenderBody()
+        <!-- Render Scripts -->
+        @RenderSection("Scripts", required: false)
+    </main>
+</div>
+
+@* <footer class="bg-light py-4 mt-5"> *@
+@*     <div class="container text-center"> *@
+@*         <p class="text-muted">&copy; 2025 InventorySupplyWebApp. All Rights Reserved.</p> *@
+@*         <p class="text-muted">For support, contact <a href="mailto:support@inventorysystem.com">support@inventorysystem.com</a></p> *@
+@*     </div> *@
+@* </footer> *@
+
+<!-- Add JavaScript Libraries -->
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

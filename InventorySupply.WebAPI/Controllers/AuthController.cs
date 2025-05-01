@@ -8,8 +8,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
+[Route("api/[controller]")]
 [ApiController]
-[Route("api/auth")]
 public class AuthController : ControllerBase
 {
     private readonly InventorySupplyDbContext _db;
@@ -20,7 +20,7 @@ public class AuthController : ControllerBase
         _config = config;
     }
 
-    [HttpPost("login")]
+    [HttpPost]
     public async Task<IActionResult> Login(LoginRequestDto dto)
     {
         var user = await _db.Users.SingleOrDefaultAsync(u => u.Username == dto.Username);

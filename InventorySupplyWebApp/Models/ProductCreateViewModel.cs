@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace InventorySupplyWebApp.Models;
 
@@ -19,4 +21,6 @@ public class ProductCreateViewModel
 
     [Required]
     public int? SupplierId { get; set; }
+
+    [BindNever] public IEnumerable<SelectListItem> Products { get; set; }
 }

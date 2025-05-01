@@ -3,35 +3,45 @@
 <h2>Inventory</h2>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Create New Inventory Item</a>
+    @if (User.IsInRole("Manager") || User.IsInRole("Admin"))
+    {
+        <a asp-action="Create" class="btn btn-primary">Create New Inventory Item</a>
+
+    }
 </p>
 
 <table class="table">
     <thead>
-    <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Reorder Level</th>
-        <th>Date Added</th>
-        <th>Last Modified</th>
-        <th></th>
-    </tr>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Reorder Level</th>
+            <th>Date Added</th>
+            <th>Last Modified</th>
+            <th></th>
+        </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.Product?.Name</td>
-            <td>@item.QuantityInStock</td>
-            <td>@item.ReorderLevel</td>
-            <td>@item.LastModified.ToShortDateString()</td>
-            <td>@(item.DateAdded.ToShortDateString())</td>
-            <td>
-                <!-- Edit, Details, and Delete buttons -->
-                <a href="@Url.Action("Edit", "Inventory", new { id = item.InventoryItemId })" class="btn btn-warning btn-sm">Edit</a>
-                <a href="@Url.Action("Details", "Inventory", new { id = item.InventoryItemId })" class="btn btn-primary btn-sm">Details</a>
-                <a href="@Url.Action("Delete", "Inventory", new { id = item.InventoryItemId })" class="btn btn-danger btn-sm">Delete</a>
-            </td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Product?.Name</td>
+                <td>@item.QuantityInStock</td>
+                <td>@item.ReorderLevel</td>
+                <td>@item.LastModified.ToShortDateString()</td>
+                <td>@(item.DateAdded.ToShortDateString())</td>
+                <td>
+                    <!-- Edit, Details, and Delete buttons -->
+                    @if (User.IsInRole("Manager") || User.IsInRole("Admin"))
+                    {
+                        <a href="@Url.Action("Edit", "Inventory", new { id = item.InventoryItemId })" class="btn btn-warning btn-sm">Edit</a>
+                    }
+                    <a href="@Url.Action("Details", "Inventory", new { id = item.InventoryItemId })" class="btn btn-primary btn-sm">Details</a>
+                    @if (User.IsInRole("Manager") || User.IsInRole("Admin"))
+                    {
+                        <a href="@Url.Action("Delete", "Inventory", new { id = item.InventoryItemId })" class="btn btn-danger btn-sm">Delete</a>
+                    }
+                </td>
         </tr>
     }
     </tbody>

@@ -1,12 +1,22 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthService
+@{
+
     ViewData["Title"] = "Suppliers";
+
 }
 
 <h2>Suppliers</h2>
 
 <p>
-<!-- Create Button to Navigate to the Create Page -->
-<a href="@Url.Action("Create", "Suppliers")" class="btn btn-primary">Create New Supplier</a>
+    <!-- Create Button to Navigate to the Create Page -->
+    @if (User.IsInRole("Manager") || User.IsInRole("Admin"))
+
+    {
+        <a href="@Url.Action("Create", "Suppliers")
+        " class="btn btn-primary">Create New Supplier</a>
+
+    }
 </p>
 <!-- Table to display suppliers -->
 <table class="table">
@@ -27,9 +37,15 @@
             <td>@supplier.Address</td>
             <td>
                 <!-- Edit and Delete buttons (if needed) -->
-                <a href="@Url.Action("Edit", "Suppliers", new { id = supplier.SupplierId })" class="btn btn-warning btn-sm">Edit</a>
+                    @if (User.IsInRole("Manager") || User.IsInRole("Admin"))
+                    {
+                        <a href="@Url.Action("Edit", "Suppliers", new { id = supplier.SupplierId })" class="btn btn-warning btn-sm">Edit</a>
+                    }
                 <a href="@Url.Action("Details", "Suppliers", new { id = supplier.SupplierId })" class="btn btn-primary btn-sm">Details</a>
+                    @if (User.IsInRole("Manager") || User.IsInRole("Admin"))
+                    {
                 <a href="@Url.Action("Delete", "Suppliers", new { id = supplier.SupplierId })" class="btn btn-danger btn-sm">Delete</a>
+                    }
             </td>
         </tr>
     }

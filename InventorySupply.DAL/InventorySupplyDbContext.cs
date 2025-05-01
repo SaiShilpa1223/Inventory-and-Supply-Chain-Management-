@@ -13,6 +13,7 @@ public class InventorySupplyDbContext : DbContext
     public DbSet<Supplier> Suppliers { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<InventoryItem> InventoryItems { get; set; }
+    public DbSet<Warehouse> Warehouses { get; set; }
 
     public DbSet<User> Users => Set<User>();
     public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
@@ -33,15 +34,23 @@ public class InventorySupplyDbContext : DbContext
             .WithMany() // No need for a navigation property on Product
             .HasForeignKey(i => i.ProductId)
             .OnDelete(DeleteBehavior.Cascade); // Optional, cascading delete
-        
+
+        // Configure the foreign key for InventoryItem -> Warehouse relationship
+        modelBuilder.Entity<InventoryItem>()
+            .HasOne(i => i.Warehouse)
+            .WithMany(w => w.InventoryItems)
+            .HasForeignKey(i => i.WarehouseId)
+            .OnDelete(DeleteBehavior.Restrict); // Adjust delete behavior as needed
+
+        // Configure default values for InventoryItem
         modelBuilder.Entity<InventoryItem>()
             .Property(i => i.DateAdded)
             .HasDefaultValueSql("GETDATE()");  // Use SQL to get the current date when inserting
-    
+
         modelBuilder.Entity<InventoryItem>()
             .Property(i => i.LastModified)
             .HasDefaultValueSql("GETDATE()");  // Automatically set on modification
-        
+
         modelBuilder.Entity<Supplier>().HasData(
             new Supplier
             {

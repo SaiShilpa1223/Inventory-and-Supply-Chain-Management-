@@ -1,3 +1,4 @@
+using InventorySupply.DAL.Models;
 using InventorySupplyWebApp.Models;
 
 namespace InventorySupplyWebApp;

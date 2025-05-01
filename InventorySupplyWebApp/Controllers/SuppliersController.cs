@@ -2,12 +2,14 @@ using System.Text;
 using InventorySupply.DAL;
 using InventorySupply.DAL.Models;
 using InventorySupplyWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace InventorySupplyWebApp.Controllers;
+
 
 public class SuppliersController : Controller
 {
