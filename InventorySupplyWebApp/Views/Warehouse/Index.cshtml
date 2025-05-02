@@ -5,12 +5,13 @@
 
 <h2>Warehouses</h2>
 <a asp-action="Create" class="btn btn-primary">Add Warehouse</a>
+
 <table class="table table-bordered mt-3">
     <thead>
         <tr>
             <th>Name</th>
             <th>Location</th>
-            <th></th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -20,10 +21,12 @@
                 <td>@warehouse.Name</td>
                 <td>@warehouse.Location</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@warehouse.Id" class="btn btn-sm btn-warning">Create</a>
-                    <a asp-action="Details" asp-route-id="@warehouse.Id" class="btn btn-sm btn-info">Details</a>
-                    <a asp-action="Edit" asp-route-id="@warehouse.Id" class="btn btn-sm btn-warning">Edit</a>
-                    <a asp-action="Details" asp-route-id="@warehouse.Id" class="btn btn-sm btn-info">Delete</a>
+                    <a href="@Url.Action("Edit", "Warehouse", new { id = warehouse.WarehouseId })" class="btn btn-warning btn-sm">Edit</a>
+
+                    @* <a asp-action="Edit" asp-route-id="@warehouse.WarehouseId" class="btn btn-sm btn-warning">Edit</a> *@
+                    <a href="@Url.Action("Details", "Warehouse", new { id = warehouse.WarehouseId })" class="btn btn-primary btn-sm">Details</a>
+                    @* <a asp-action="Delete" asp-route-id="@warehouse.WarehouseId" class="btn btn-sm btn-danger">Delete</a> *@
+                    <a href="@Url.Action("Delete", "Warehouse", new { id = warehouse.WarehouseId })" class="btn btn-danger btn-sm">Delete</a>
 
                 </td>
             </tr>

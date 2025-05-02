@@ -1,0 +1,31 @@
+﻿@model IEnumerable<InventorySupplyWebApp.Models.ReportsModel>
+@{
+    ViewData["Title"] = "Products by Warehouse Report";
+}
+
+<h2>@ViewData["Title"]</h2>
+@foreach (var warehouseGroup in Model.GroupBy(r => new { r.WarehouseId, r.WarehouseName }))
+{
+    <h3>@warehouseGroup.Key.WarehouseName (ID: @warehouseGroup.Key.WarehouseId)</h3>
+    <table class="table table-striped mb-4">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Description</th>
+                <th>Supplier</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in warehouseGroup)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.SupplierName</td>
+                    <td>@item.Quantity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

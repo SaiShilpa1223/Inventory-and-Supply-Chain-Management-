@@ -71,7 +71,6 @@ public class ProductsController : ControllerBase
         {
             return BadRequest();
         }
-
         _context.Entry(product).State = EntityState.Modified;
         await _context.SaveChangesAsync();
 

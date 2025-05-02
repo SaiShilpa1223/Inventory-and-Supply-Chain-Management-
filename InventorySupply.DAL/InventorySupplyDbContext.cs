@@ -15,6 +15,7 @@ public class InventorySupplyDbContext : DbContext
     public DbSet<InventoryItem> InventoryItems { get; set; }
     public DbSet<Warehouse> Warehouses { get; set; }
 
+    public DbSet<TransferProduct> TransferProducts { get; set; }
     public DbSet<User> Users => Set<User>();
     public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
 
@@ -26,7 +27,6 @@ public class InventorySupplyDbContext : DbContext
             .HasOne(p => p.Supplier)
             .WithMany(s => s.Products)
             .HasForeignKey(p => p.SupplierId)
-            .HasForeignKey(p => p.Id)
             .OnDelete(DeleteBehavior.Restrict); // Optional, prevent cascading delete
 
         // Configure the foreign key for InventoryItem -> Product relationship
@@ -39,9 +39,9 @@ public class InventorySupplyDbContext : DbContext
         // Configure the foreign key for InventoryItem -> Warehouse relationship
         modelBuilder.Entity<InventoryItem>()
             .HasOne(i => i.Warehouse)
-            .WithMany(w => w.InventoryItems)
+            .WithMany(w => (IEnumerable<InventoryItem>)w.InventoryItems) // Explicit cast to resolve CS0266
             .HasForeignKey(i => i.WarehouseId)
-            .OnDelete(DeleteBehavior.Restrict); // Adjust delete behavior as needed
+            .OnDelete(DeleteBehavior.Restrict);// Adjust delete behavior as needed
 
         // Configure default values for InventoryItem
         modelBuilder.Entity<InventoryItem>()
@@ -51,6 +51,18 @@ public class InventorySupplyDbContext : DbContext
         modelBuilder.Entity<InventoryItem>()
             .Property(i => i.LastModified)
             .HasDefaultValueSql("GETDATE()");  // Automatically set on modification
+
+        modelBuilder.Entity<TransferProduct>()
+           .HasOne(tp => tp.FromWarehouseNav)
+           .WithMany()
+           .HasForeignKey(tp => tp.FromWarehouse)
+           .OnDelete(DeleteBehavior.Restrict); // or NoAction
+
+        modelBuilder.Entity<TransferProduct>()
+            .HasOne(tp => tp.ToWarehouseNav)
+            .WithMany()
+            .HasForeignKey(tp => tp.ToWarehouse)
+            .OnDelete(DeleteBehavior.Restrict); // or NoAction
 
         modelBuilder.Entity<Supplier>().HasData(
             new Supplier

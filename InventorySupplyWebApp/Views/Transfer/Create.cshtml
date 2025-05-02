@@ -1,0 +1,31 @@
+﻿@model InventorySupplyWebApp.Models.TransferModel
+
+<h2>Create Transfer</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="ProductId"></label>
+        <select asp-for="ProductId" asp-items="Model.Products" class="form-control"></select>
+        <span asp-validation-for="ProductId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FromWarehouseId">From Warehouse</label>
+        <select asp-for="FromWarehouseId" asp-items="Model.Warehouses" class="form-control"></select>
+        <span asp-validation-for="FromWarehouseId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ToWarehouseId">To Warehouse</label>
+        <select asp-for="ToWarehouseId" asp-items="Model.Warehouses" class="form-control"></select>
+        <span asp-validation-for="ToWarehouseId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TransferQty">Quantity</label>
+        <input asp-for="TransferQty" class="form-control" />
+        <span asp-validation-for="TransferQty" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit Transfer</button>
+</form>

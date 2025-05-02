@@ -25,7 +25,7 @@ public class Product
     [Required]
     public int? SupplierId { get; set; }
     [Required]
-    public int? Id { get; set; }
+    public int? WarehouseId { get; set; }
 
     // Navigation property
     public Supplier? Supplier { get; set; }

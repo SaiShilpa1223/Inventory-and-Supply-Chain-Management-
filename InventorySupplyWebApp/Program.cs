@@ -1,4 +1,6 @@
 using InventorySupply.DAL;
+using InventorySupplyWebApp.Interface;
+using InventorySupplyWebApp.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -6,7 +8,8 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+// in Program.cs (WebApp project)
+builder.Services.AddScoped<ITransferService, TransferService>();
 
 // ✅ Register DbContext here
 builder.Services.AddDbContext<InventorySupplyDbContext>(options =>

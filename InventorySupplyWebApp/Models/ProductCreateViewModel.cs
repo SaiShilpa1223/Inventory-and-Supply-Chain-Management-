@@ -22,7 +22,7 @@ public class ProductCreateViewModel
     [Required]
     public int? SupplierId { get; set; }
     [Required]
-    public int? Id { get; set; }
+    public int? WarehouseId { get; set; }
 
     [Required]
     public int Quantity { get; set; }

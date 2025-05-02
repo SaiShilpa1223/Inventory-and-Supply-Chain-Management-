@@ -32,16 +32,16 @@ public class ProductsController : Controller
         var products = JsonConvert.DeserializeObject<List<Product>>(responseString);
 
         var warehouseIds = products
-                .Where(p => p.Id != 0)
-                .Select(p => p.Id)
+                .Where(p => p.WarehouseId != 0)
+                .Select(p => p.WarehouseId)
                 .Distinct()
                 .ToList();
 
-        var warehouseLookup = warehouses.ToDictionary(w => w.Id);
+        var warehouseLookup = warehouses.ToDictionary(w => w.WarehouseId);
 
         foreach (var product in products)
         {
-            if (warehouseLookup.TryGetValue((int)product.Id, out var wh))
+            if (warehouseLookup.TryGetValue((int)product.WarehouseId, out var wh))
             {
                 product.Warehouse = wh;
             }
@@ -78,7 +78,7 @@ public class ProductsController : Controller
         var vm = new ProductCreateViewModel
        {
             Suppliers = suppliers.Select(s => new SelectListItem(s.Name, s.SupplierId.ToString())),
-            Warehouses = warehouses.Select(w => new SelectListItem(w.Name, w.Id.ToString()))
+            Warehouses = warehouses.Select(w => new SelectListItem(w.Name, w.WarehouseId.ToString()))
        };
         
               return View(vm);
@@ -131,7 +131,7 @@ public class ProductsController : Controller
             Price = product.Price,
             Quantity = product.Quantity,
             SupplierId = (int)product.SupplierId,
-            Id = (int)product.Id
+            WarehouseId = (int)product.WarehouseId
         };
 
         //ViewBag.Suppliers = new SelectList(_context.Suppliers, "SupplierId", "Name", product.SupplierId);
@@ -141,14 +141,14 @@ public class ProductsController : Controller
         var vm = new ProductCreateViewModel
         {
             Suppliers = suppliers.Select(s => new SelectListItem(s.Name, s.SupplierId.ToString())),
-            Warehouses = warehouses.Select(w => new SelectListItem(w.Name, w.Id.ToString())),
+            Warehouses = warehouses.Select(w => new SelectListItem(w.Name, w.WarehouseId.ToString())),
             ProductId = product.ProductId,
             Name = product.Name,
             Description = product.Description,
             Price = product.Price,
             Quantity = product.Quantity,
             SupplierId = (int)product.SupplierId,
-            Id = (int)product.Id
+            WarehouseId = (int)product.WarehouseId
         };
 
         return View(vm);
@@ -174,7 +174,7 @@ public class ProductsController : Controller
                 Price = viewModel.Price,
                 SupplierId = viewModel.SupplierId,
                 Quantity = viewModel.Quantity,
-                Id = viewModel.Id
+                WarehouseId = viewModel.WarehouseId
             };
 
             // Make the PUT request to the API to update the product
@@ -205,7 +205,7 @@ public class ProductsController : Controller
         // Deserialize the response into a Product object
         var product = JsonConvert.DeserializeObject<Product>(responseString);        
 
-        var warehouseLookup = warehouses.ToDictionary(w => w.Id);
+        var warehouseLookup = warehouses.ToDictionary(w => w.WarehouseId);
 
         // Check if product is null
         if (product == null)
@@ -213,7 +213,7 @@ public class ProductsController : Controller
             return NotFound();
         }
 
-        if (warehouseLookup.TryGetValue((int)product.Id, out var wh))
+        if (warehouseLookup.TryGetValue((int)product.WarehouseId, out var wh))
         {
             product.Warehouse = wh;
         }
